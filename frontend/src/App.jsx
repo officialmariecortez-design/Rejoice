@@ -6,8 +6,13 @@ import About from './components/About'
 import Booking from './components/Booking'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import Admin from './Admin'
 
 export default function App() {
+  const isAdminRoute = window.location.pathname.replace(/\/+$/, '') === '/admin'
+
+  if (isAdminRoute) return <Admin />
+
   return (
     <div className="relative">
       <div className="grain" aria-hidden="true" />

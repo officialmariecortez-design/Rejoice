@@ -27,7 +27,10 @@ export default function Footer() {
           ))}
         </nav>
 
-        <span className="eyebrow text-fog">© {new Date().getFullYear()} Liora Media</span>
+        <div className="flex items-center gap-5">
+          <a href="/admin" className="eyebrow text-fog/60 hover:text-brass transition-colors">Admin</a>
+          <span className="eyebrow text-fog">© {new Date().getFullYear()} Liora Media</span>
+        </div>
       </div>
     </footer>
   )
