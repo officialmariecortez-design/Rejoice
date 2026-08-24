@@ -8,6 +8,7 @@ async function adminFetch(path, key, options = {}) {
   const headers = {
     ...(options.body ? { 'Content-Type': 'application/json' } : {}),
     'x-admin-key': key,
+    'Authorization': `Bearer ${key}`,
     ...(options.headers || {}),
   }
   const res = await fetch(path, { ...options, headers })
