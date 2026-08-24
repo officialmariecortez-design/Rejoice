@@ -2,15 +2,16 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X, Aperture } from 'lucide-react'
 
-const LINKS = [
-  { label: 'Services', href: '#services' },
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Studio', href: '#about' },
-  { label: 'Booking', href: '#booking' },
-  { label: 'Contact', href: '#contact' },
-]
-
-export default function Navbar() {
+export default function Navbar({ content }) {
+  const nav = content?.nav || {}
+  const brand = content?.brand || {}
+  const LINKS = [
+    { label: nav.services || 'Services', href: '#services' },
+    { label: nav.portfolio || 'Portfolio', href: '#portfolio' },
+    { label: nav.studio || 'Studio', href: '#about' },
+    { label: nav.booking || 'Booking', href: '#booking' },
+    { label: nav.contact || 'Contact', href: '#contact' },
+  ]
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -33,7 +34,7 @@ export default function Navbar() {
             strokeWidth={1.4}
           />
           <span className="font-display text-xl tracking-wide">
-            Liora <span className="text-brass italic">Media</span>
+            {brand.name || 'Liora'} <span className="text-brass italic">{brand.accent || 'Media'}</span>
           </span>
         </a>
 

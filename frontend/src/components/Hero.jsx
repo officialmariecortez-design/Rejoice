@@ -47,7 +47,8 @@ function Tile({ tile, layout, progress, index }) {
   )
 }
 
-export default function Hero() {
+export default function Hero({ content }) {
+  const c = content || {}
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
 
@@ -72,25 +73,24 @@ export default function Hero() {
           className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6"
           style={{ opacity: textOpacity, y: textY }}
         >
-          <span className="eyebrow text-brass mb-5">ƒ/ Studio · Photography · Media Production</span>
+          <span className="eyebrow text-brass mb-5">{c.eyebrow}</span>
           <h1 className="font-display font-medium leading-[0.95] text-5xl sm:text-6xl md:text-7xl lg:text-8xl max-w-4xl">
-            Every frame,
+            {c.title || 'Every frame,'}
             <br />
-            <span className="italic text-brass">deliberately</span> made.
+            <span className="italic text-brass">{c.accentTitle || 'deliberately'}</span> {c.titleEnd || 'made.'}
           </h1>
           <p className="mt-6 max-w-xl text-porcelain/70 text-base md:text-lg">
-            Liora Media is a full-service creative studio — design, photography, film and the
-            equipment behind every great campaign, under one roof.
+            {c.description}
           </p>
           <div className="mt-9 flex flex-col sm:flex-row gap-4">
             <a
-              href="#booking"
+              href={c.primaryHref || "#booking"}
               className="bg-brass text-ink px-8 py-3.5 eyebrow hover:bg-porcelain transition-colors duration-300"
             >
               Book a Session
             </a>
             <a
-              href="#portfolio"
+              href={c.secondaryHref || "#portfolio"}
               className="border border-porcelain/30 px-8 py-3.5 eyebrow text-porcelain hover:border-brass hover:text-brass transition-colors duration-300"
             >
               See the Work

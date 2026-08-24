@@ -29,3 +29,16 @@ create index if not exists bookings_date_idx on public.bookings (date);
 -- The API uses the Supabase service-role key server-side, so these tables do not
 -- need public INSERT/SELECT policies for the website's API routes.
 -- Keep the service-role key out of frontend code and browser-exposed variables.
+
+
+create table if not exists public.site_content (
+  id bigint primary key default 1 check (id = 1),
+  content jsonb not null default '{}'::jsonb,
+  updated_at timestamptz not null default now()
+);
+
+insert into public.site_content (id, content)
+values (1, '{}'::jsonb)
+on conflict (id) do nothing;
+
+grant select, insert, update, delete on table public.site_content to service_role;

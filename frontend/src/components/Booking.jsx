@@ -3,27 +3,18 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Check, Loader2 } from 'lucide-react'
 import { submitBooking } from '../lib/api'
 
-const SERVICES = [
-  'Studio Photo Session',
-  'Camera / Lens Rental',
-  'Lighting & Grip Rental',
-  'Campaign or Program Booking',
-  'Videography / Cinematography',
-  'Podcast Studio Rental',
-  'Other',
-]
-
 const initialForm = {
   name: '',
   email: '',
   phone: '',
-  service: SERVICES[0],
+  service: serviceOptions[0],
   date: '',
   time: '',
   message: '',
 }
 
-export default function Booking() {
+export default function Booking({ services = [] }) {
+  const serviceOptions = services.length ? services.map((s) => s.title) : ['Studio Photo Session', 'Camera / Lens Rental', 'Lighting & Grip Rental', 'Campaign or Program Booking', 'Videography / Cinematography', 'Podcast Studio Rental', 'Other']
   const [form, setForm] = useState(initialForm)
   const [status, setStatus] = useState('idle') // idle | loading | success | error
   const [errorMsg, setErrorMsg] = useState('')
@@ -105,7 +96,7 @@ export default function Booking() {
               onChange={(e) => update('service', e.target.value)}
               className="input"
             >
-              {SERVICES.map((s) => (
+              {serviceOptions.map((s) => (
                 <option key={s} value={s}>
                   {s}
                 </option>

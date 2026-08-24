@@ -2,13 +2,9 @@ import { motion } from 'framer-motion'
 import { teamStrip } from '../lib/images'
 import ApertureDivider from './ApertureDivider'
 
-const STATS = [
-  { value: '9+', label: 'Services Under One Studio' },
-  { value: '240+', label: 'Campaigns Delivered' },
-  { value: '15', label: 'Rental Kits On Standby' },
-]
-
-export default function About() {
+export default function About({ content }) {
+  const c = content || {}
+  const stats = c.stats || []
   return (
     <section id="about" className="py-28 px-6 md:px-10 bg-ink">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
@@ -18,25 +14,19 @@ export default function About() {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8 }}
         >
-          <span className="eyebrow text-brass">The Studio</span>
+          <span className="eyebrow text-brass">{c.eyebrow || 'The Studio'}</span>
           <h2 className="font-display font-medium text-4xl md:text-5xl mt-4 mb-6 leading-tight">
-            A small team,
-            <br />
-            held to a high shutter speed.
+            {c.title || 'A small team, held to a high shutter speed.'}
           </h2>
           <p className="text-porcelain/65 leading-relaxed mb-6">
-            Liora Media was built for brands and creators who need more than one vendor to pull
-            off a campaign. Our designers, photographers and producers work from the same studio,
-            share the same equipment room, and hold every deliverable to the same standard —
-            whether it's a single portrait or a full program rollout.
+            {c.paragraphs?.[0]}
           </p>
           <p className="text-porcelain/65 leading-relaxed mb-10">
-            Behind every session is gear we maintain ourselves, a studio we know inside out, and a
-            crew that's shot enough campaigns to know exactly what a brief actually needs.
+            {c.paragraphs?.[1]}
           </p>
 
           <div className="grid grid-cols-3 gap-6 border-t border-brass/15 pt-8">
-            {STATS.map((s) => (
+            {stats.map((s) => (
               <div key={s.label}>
                 <div className="font-display text-3xl text-brass">{s.value}</div>
                 <div className="text-xs text-porcelain/50 mt-2 leading-snug">{s.label}</div>

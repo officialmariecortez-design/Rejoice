@@ -5,7 +5,8 @@ import { submitContact } from '../lib/api'
 
 const initialForm = { name: '', email: '', message: '' }
 
-export default function Contact() {
+export default function Contact({ content }) {
+  const c = content || {}
   const [form, setForm] = useState(initialForm)
   const [status, setStatus] = useState('idle')
   const [errorMsg, setErrorMsg] = useState('')
@@ -38,29 +39,28 @@ export default function Contact() {
           transition={{ duration: 0.7 }}
           className="md:col-span-2"
         >
-          <span className="eyebrow text-brass">Get In Touch</span>
-          <h2 className="font-display font-medium text-4xl mt-4 mb-8">Let's talk media.</h2>
+          <span className="eyebrow text-brass">{c.eyebrow || 'Get In Touch'}</span>
+          <h2 className="font-display font-medium text-4xl mt-4 mb-8">{c.title || "Let's talk media."}</h2>
           <div className="space-y-5 text-porcelain/70 text-sm">
             <div className="flex items-start gap-3">
               <MapPin className="w-4 h-4 mt-0.5 text-brass shrink-0" />
-              <span>12 Aperture Lane, Victoria Island, Lagos, Nigeria</span>
+              <span>{c.address}</span>
             </div>
             <div className="flex items-start gap-3">
               <Mail className="w-4 h-4 mt-0.5 text-brass shrink-0" />
-              <span>hello@liora.media</span>
+              <span>{c.email}</span>
             </div>
             <div className="flex items-start gap-3">
               <Phone className="w-4 h-4 mt-0.5 text-brass shrink-0" />
-              <span>+234 800 000 0000</span>
+              <span>{c.phone}</span>
             </div>
             <div className="flex items-start gap-3">
               <Instagram className="w-4 h-4 mt-0.5 text-brass shrink-0" />
-              <span>@lioramedia</span>
+              <span>{c.instagram}</span>
             </div>
           </div>
           <p className="text-xs text-fog mt-8 leading-relaxed">
-            Placeholder studio details — update these with Liora Media's real address, contact
-            info and socials.
+            {c.note}
           </p>
         </motion.div>
 

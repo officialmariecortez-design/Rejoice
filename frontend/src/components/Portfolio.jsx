@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion'
-import { portfolioItems } from '../lib/images'
 
-export default function Portfolio() {
+export default function Portfolio({ content }) {
+  const c = content || {}
+  const items = c.items || []
   return (
     <section id="portfolio" className="py-28 px-6 md:px-10 bg-ink2">
       <div className="max-w-7xl mx-auto">
@@ -13,17 +14,16 @@ export default function Portfolio() {
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16"
         >
           <div>
-            <span className="eyebrow text-brass">Selected Work</span>
-            <h2 className="font-display font-medium text-4xl md:text-5xl mt-4">The Portfolio</h2>
+            <span className="eyebrow text-brass">{c.eyebrow || 'Selected Work'}</span>
+            <h2 className="font-display font-medium text-4xl md:text-5xl mt-4">{c.title || 'The Portfolio'}</h2>
           </div>
           <p className="max-w-sm text-porcelain/60 text-sm leading-relaxed">
-            A cross-section of design, photography and campaign work produced in and out of the
-            studio.
+            {c.description}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {portfolioItems.map((item, i) => (
+          {items.map((item, i) => (
             <motion.div
               key={item.title}
               initial={{ opacity: 0, y: 40 }}
