@@ -20,7 +20,7 @@ export const FALLBACK_CONTENT = {
     {src:'https://images.unsplash.com/photo-1524863479829-916d8e77f114?auto=format&fit=crop&w=900&q=75',title:'Live Campaign Coverage',tag:'Campaign'},
     {src:'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=900&q=75',title:'Motion & Reel Production',tag:'Video'}
   ] },
-  contact: { eyebrow:'Get In Touch', title:"Let's talk media.", address:'12 Aperture Lane, Victoria Island, Lagos, Nigeria', email:'hello@liora.media', phone:'+234 800 000 0000', instagram:'@lioramedia', instagramUrl:'#', note:'media at it's best form.' },
+  contact: { eyebrow:'Get In Touch', title:"Let's talk media.", address:'12 Aperture Lane, Victoria Island, Lagos, Nigeria', email:'hello@liora.media', phone:'+234 800 000 0000', instagram:'@lioramedia', instagramUrl:'#', note:'media.' },
   footer: { copyright:'Liora Media', adminLabel:'Admin' },
   nav: { services:'Services', portfolio:'Portfolio', studio:'Studio', booking:'Booking', contact:'Contact', bookNow:'Book Now' }
 }
