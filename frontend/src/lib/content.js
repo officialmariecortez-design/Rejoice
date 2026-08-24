@@ -25,9 +25,9 @@ export const FALLBACK_CONTENT = {
   nav: { services:'Services', portfolio:'Portfolio', studio:'Studio', booking:'Booking', contact:'Contact', bookNow:'Book Now' }
 }
 
-export async function fetchSiteContent() {
+export async function fetchSiteContent(options = {}) {
   try {
-    const res = await fetch('/api/content', { headers: { Accept: 'application/json' } })
+    const res = await fetch('/api/content', { headers: { Accept: 'application/json' }, ...options })
     if (!res.ok) throw new Error('Content request failed')
     return await res.json()
   } catch {
