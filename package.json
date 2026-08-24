@@ -1,0 +1,11 @@
+{
+  "name": "liora-media",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "npm --prefix frontend run build",
+    "install:frontend": "npm --prefix frontend install"
+  }
+}
