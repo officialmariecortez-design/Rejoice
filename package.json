@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vercel dev"
+    "dev": "vercel dev",
+    "install:all": "npm ci && npm --prefix frontend ci",
+    "build": "npm --prefix frontend run build"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0"
